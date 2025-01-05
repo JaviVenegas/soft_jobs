@@ -7,14 +7,9 @@ const { handleLogin, handleRegistrar, handleObtenerUsuario } = require('../contr
 
 
 
-
 router.post('/login', handleLogin);   
 router.post ('/usuario', handleRegistrar);
 router.get ('/usuario', handleObtenerUsuario);
-
-
-
-
 
 
 module.exports = router; 

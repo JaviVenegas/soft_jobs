@@ -5,7 +5,8 @@ const format = require ( 'pg-format'); //libreria de formatiar, para parametriza
 const verificarCredenciales = async (email, password) => {
   try {
     const SQLQuery = format(
-      `SELECT * FROM usuarios WHERE email = %L AND password = %L`,
+      `SELECT * FROM usuarios
+      WHERE email = %L AND password = %L`,
       email,
       password
     );
@@ -24,17 +25,31 @@ const verificarCredenciales = async (email, password) => {
 };
 
 
+
 const obtenerUsuarioPorEmail = async (email) => {
-  const result = await DB.query('SELECT * FROM usuarios WHERE email = $1', [email]);
-  return result.rows[0];
+  
+  try {
+    const result = await DB.query('SELECT * FROM usuarios WHERE email = $1', [email]);
+    return result.rows[0];
+
+  }catch (error){
+    throw error; 
+  }
 };
 
+
+
 const crearUsuario  = async (email, password, rol, lenguage) => {
-  const result = await DB.query(
-    'INSERT INTO usuarios (email, password, rol, language) VALUES ($1, $2, $3, $4) RETURNING *',
-    [email, password, rol, lenguage]
-  );
-  return result.rows[0];
+  try {
+    const result = await DB.query(
+      'INSERT INTO usuarios (email, password, rol, lenguage) VALUES ($1, $2, $3, $4) RETURNING *',
+      [email, password, rol, lenguage]
+    );
+    return result.rows[0];
+
+  }catch(error){
+    throw error; 
+  }
 };
 
   
