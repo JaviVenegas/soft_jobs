@@ -3,8 +3,10 @@ const jwt = require("jsonwebtoken");
 require ('dotenv').config();
 
 
-const {JWT_SECRET} = process.env
 
+
+const {JWT_SECRET} = process.env
+//codigo para crear firmar token 
 const signToken = (data) =>{
     return jwt.sign(
         data, 
@@ -15,15 +17,17 @@ const signToken = (data) =>{
         })
 }; 
 
-const verifyToken = (token) => {
-    return jwt.verify(token, String(process.env.JWT_SECRET));
+
+//codigo para verificar token
+
+const verificarToken = (token) => {
+    return jwt.verify(token, String(JWT_SECRET));  
 };
 
-const decodeToken = (token) => {
-    return jwt.decode(token);
-};
 
 
-module.exports = {signToken, verifyToken, decodeToken}
+
+
+module.exports = {signToken, verificarToken} 
 
 

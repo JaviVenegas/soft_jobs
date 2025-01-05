@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt');
 
 
 //login 
-
 const handleLogin = async (req, res, next) => {
     try {
         const { email, password } = req.body;

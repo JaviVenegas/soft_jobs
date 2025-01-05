@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ENDPOINT } from '../config/constans'
+import { ENDPOINT } from '../config/constants'
 import Context from '../contexts/Context'
 
 const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
@@ -33,7 +33,7 @@ const Login = () => {
         navigate('/perfil')
       })
       .catch(({ response: { data } }) => {
-        console.error(data)
+        console.error(data.message)
         window.alert(`${data.message} 🙁.`)
       })
   }

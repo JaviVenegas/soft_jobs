@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Context from '../contexts/Context'
 import { useContext, useEffect } from 'react'
-import { ENDPOINT } from '../config/constans'
+import { ENDPOINT } from '../config/constants'
 
 const Home = () => {
   const { setDeveloper } = useContext(Context)

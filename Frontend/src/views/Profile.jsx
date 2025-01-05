@@ -2,7 +2,7 @@ import axios from 'axios'
 import Context from '../contexts/Context'
 import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ENDPOINT } from '../config/constans'
+import { ENDPOINT } from '../config/constants'
 
 const Profile = () => {
   const navigate = useNavigate()
@@ -13,7 +13,7 @@ const Profile = () => {
     axios.get(ENDPOINT.users, { headers: { Authorization: `Bearer ${token}` } })
       .then(({ data: [user] }) => setDeveloper({ ...user }))
       .catch(({ response: { data } }) => {
-        console.error(data)
+        console.error(data.message)
         window.sessionStorage.removeItem('token')
         setDeveloper(null)
         navigate('/')
